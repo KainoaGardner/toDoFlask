@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}User{% endblock %} {% block content
+%}
+<h1>{{ username }}</h1>
+<hr />
+
+<form action="#" method="post">
+  <label>Add and Entry</label><br />
+  <input type="text" name="entry" /><br />
+  <input type="submit" name="submit" />
+</form>
+
+<hr />
+<h2>Incomplete</h2>
+{% for entry in entries %}
+  {% if not entry.complete %}
+<hr>
+  <li>x: {{ entry.text }} <a href="{{ url_for('complete',id=entry.id) }}">Complete</a> <a href="{{ url_for('remove',id=entry.id) }}">Remove</a></li>
+{% endif %}
+{% endfor %}
+
+<h2>Complete</h2>
+{% for entry in entries %}
+  {% if entry.complete %}
+<hr>
+  <li>x: {{ entry.text }} <a href="{{ url_for('uncomplete',id=entry.id) }}">Undo</a> <a href="{{ url_for('remove',id=entry.id) }}">Remove</a></li>
+{% endif %}
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}Admin{% endblock %} {% block content
+%}
+<h1>Admin</h1>
+<hr />
+
+<h2>Registered Users</h2>
+<form action="#" method="post">
+  <label>Remove Username</label><br />
+  <input type="text" name="remove_username" /><br />
+  <input type="submit" name="submit" />
+</form>
+<hr />
+{% for user in users %}
+<div>
+  <p>"Username: " {{ user.name }}</p>
+  <p>"Password: " {{ user.password }}</p>
+  <hr />
+</div>
+{% endfor %} {% endblock %}
